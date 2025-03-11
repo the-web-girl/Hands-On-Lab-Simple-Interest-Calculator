@@ -1,11 +1,3 @@
-// Création d'une fonction pour modifier la valeur du curseur "taux"
-// Creating a function to change the value of the "rate" slider
-
-function updateRate() {
-    var rateval = document.getElementById("rate").value;
-    document.getElementById("rate_val").innerText = rateval;
-}
-
 // Création d'une fonction et de variables pour les fonctionnalités du bouton de calcul
 // Creating a function and variables for the calculation button functionality
 
@@ -18,4 +10,21 @@ function compute() {
     var interest = principal * years * rate / 100;
     var amount = parseInt(principal) + parseFloat(interest);
     var result = document.getElementById("result");
+    var year = new Date().getFullYear() + parseInt(years);
+    
+    if (principal <= 0) {
+        alert('Please enter a positive number!');
+        document.getElementById("principal").focus();
+    } else {
+        result.innerHTML = "If you deposit $" + "<mark>" + principal + "</mark>" + ",\<br\> at an interest rate of " + "<mark>" + rate + "%" + "</mark>" + "\<br\> You will receive an amount of $" + "<mark>" + amount + "</mark>" + ",\<br\> in the year " + "<mark>" + year + "</mark>" + "\<br\>";
+    }
+}
+
+
+// Création d'une fonction pour modifier la valeur du curseur "taux"
+// Creating a function to change the value of the "rate" slider
+
+function updateRate() {
+    var rateval = document.getElementById("rate").value;
+    document.getElementById("rate_val").innerText = rateval;
 }
